@@ -1,0 +1,37 @@
+2017-09-07T01:22:26.415-0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] MongoDB starting : pid=11475 port=27017 dbpath=/workspace/ArulaService/mongodb 64-bit host=lucas-270E5J-2570EJ
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] db version v3.4.8
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] git version: 8ef456f89f63ab12941fe6b5352b20cff2522da3
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] modules: none
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] build environment:
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] options: { net: { http: { RESTInterfaceEnabled: true, enabled: true } }, storage: { dbPath: "/workspace/ArulaService/mongodb", directoryPerDB: true }, systemLog: { destination: "file", logAppend: true, path: "/home/lucas/workspace/ArulaService/mongodb/logs/mongo.log" } }
+2017-09-07T01:22:26.419-0300 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /workspace/ArulaService/mongodb not found., terminating
+2017-09-07T01:22:26.419-0300 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-09-07T01:22:26.419-0300 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] now exiting
+2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] shutting down with code:100
+2017-09-07T01:24:26.399-0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] MongoDB starting : pid=11543 port=27017 dbpath=/home/lucas/workspace/ArulaService/mongodb 64-bit host=lucas-270E5J-2570EJ
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] db version v3.4.8
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] git version: 8ef456f89f63ab12941fe6b5352b20cff2522da3
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] modules: none
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] build environment:
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] options: { net: { http: { RESTInterfaceEnabled: true, enabled: true } }, storage: { dbPath: "/home/lucas/workspace/ArulaService/mongodb", directoryPerDB: true }, systemLog: { destination: "file", logAppend: true, path: "/home/lucas/workspace/ArulaService/mongodb/logs/mongo.log" } }
+2017-09-07T01:24:26.429-0300 E NETWORK  [initandlisten] listen(): bind() failed Address already in use for socket: 0.0.0.0:27017
+2017-09-07T01:24:26.429-0300 E NETWORK  [initandlisten]   addr already in use
+2017-09-07T01:24:26.430-0300 E NETWORK  [initandlisten] Failed to set up sockets during startup.
+2017-09-07T01:24:26.430-0300 E STORAGE  [initandlisten] Failed to set up listener: InternalError: Failed to set up sockets
+2017-09-07T01:24:26.430-0300 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-09-07T01:24:26.430-0300 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-09-07T01:24:26.430-0300 I CONTROL  [initandlisten] now exiting
+2017-09-07T01:24:26.430-0300 I CONTROL  [initandlisten] shutting down with code:48
