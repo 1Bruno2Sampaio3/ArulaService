@@ -1,6 +1,6 @@
 debug:
-	export ARULA_DB_NAME="arula-test"
-	cd ${GOPATH}/src && go build -o arulaservice.exe
-
+	cd ${GOPATH}/src && go build
 db:
+	echo "Deleting logs"
+	cd mongodb/logs && echo "" > mongo.log
 	sudo ./util/mongo.sh
