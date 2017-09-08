@@ -23,3 +23,4 @@ go/src/sourcegraph.com/
 go/bin/
 mongodb/journal/
 mongodb/local/
+mongodb/admin/

@@ -12,7 +12,7 @@ type App struct {
 
 func (a *App) Init(user, password, dbname string) {
 
-	s, err := mgo.Dial("production.alura.com")
+	s, err := mgo.Dial("")
 	if err != nil {
 		panic(err)
 	}
@@ -25,4 +25,6 @@ func (a *App) Init(user, password, dbname string) {
 
 }
 
-func (a *App) Run(addr string) {}
+func (a *App) Run(addr string) {
+
+}
