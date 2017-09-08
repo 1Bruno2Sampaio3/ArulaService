@@ -4,8 +4,8 @@
 *.so
 *.dylib
 *.a
-*.log
 *.lock
+*.log
 
 # Test binary, build with `go test -c`
 *.test
@@ -22,3 +22,4 @@ go/src/gopkg.in/
 go/src/sourcegraph.com/
 go/bin/
 mongodb/journal/
+mongodb/local/
