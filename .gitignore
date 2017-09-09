@@ -27,3 +27,5 @@ go/bin/
 mongodb/journal/
 mongodb/local/
 mongodb/admin/
+mongodb/arula-test
+mongodb/test

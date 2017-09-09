@@ -10,7 +10,7 @@ import (
 // Main structs
 
 type User struct {
-	ID          int          `json:"id"`
+	ID          int          `json:"id" bson:"_id,omitempty"`
 	Name        string       `json:"name"`
 	Email       string       `json:"email"`
 	Password    string       `json:"password"`
@@ -23,7 +23,7 @@ type User struct {
 }
 
 type Company struct {
-	ID       int     `json:"id"`
+	ID       int     `json:"id" bson:"_id,omitempty"`
 	Name     string  `json:"name"`
 	Email    string  `json:"email"`
 	Password string  `json:"password"`
@@ -35,12 +35,12 @@ type Company struct {
 //Substructs
 
 type Skill struct {
-	ID   int    `json:"id"`
+	ID   int    `json:"id" bson:"_id,omitempty"`
 	Name string `json:"name"`
 }
 
 type Experience struct {
-	ID         int       `json:"id"`
+	ID         int       `json:"id" bson:"_id,omitempty"`
 	Name       string    `json:"name"`
 	Occupation string    `json:"occupation`
 	Start      time.Time `json:"start"`
@@ -48,7 +48,7 @@ type Experience struct {
 }
 
 type Job struct {
-	ID       int       `json:"id"`
+	ID       int       `json:"id" bson:"_id,omitempty"`
 	Title    string    `json:"title"`
 	Desc     string    `json:"desc"`
 	Date     time.Time `json:"date"`
@@ -56,7 +56,21 @@ type Job struct {
 }
 
 func (u *User) createUser(db *mgo.Session) error {
-	return errors.New("Not implemented")
+
+	// s, err := getSess()
+	// defer s.Close()
+
+	// if err != nil {
+	// 	return err
+	// }
+
+	c := db.DB("arula-test").C("users")
+	if err := c.Insert(u); err != nil {
+		return err
+	}
+
+	return nil
+
 }
 
 func (u *User) getUser(db *mgo.Session) error {
@@ -109,4 +123,9 @@ func (u *Job) deleteJob(db *mgo.Session) error {
 
 func getJobs(db *mgo.Session, start, count int) error {
 	return errors.New("Not implemented")
+}
+
+func getSess() (*mgo.Session, error) {
+
+	return mgo.Dial("127.0.0.1:7778/test")
 }
