@@ -28,9 +28,7 @@ func TestMain(m *testing.M) {
 }
 
 // FIXME: Paulo
-func ensureTablesExists() {
-	a.Session.
-}
+func ensureTablesExists() {}
 
 // FIXME: Paulo
 func clearTable() {}

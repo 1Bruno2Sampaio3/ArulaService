@@ -1,37 +1,43 @@
-2017-09-07T01:22:26.415-0300 I CONTROL  [main] ***** SERVER RESTARTED *****
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] MongoDB starting : pid=11475 port=27017 dbpath=/workspace/ArulaService/mongodb 64-bit host=lucas-270E5J-2570EJ
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] db version v3.4.8
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] git version: 8ef456f89f63ab12941fe6b5352b20cff2522da3
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] allocator: tcmalloc
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] modules: none
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] build environment:
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten]     distmod: ubuntu1604
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten]     distarch: x86_64
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten]     target_arch: x86_64
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] options: { net: { http: { RESTInterfaceEnabled: true, enabled: true } }, storage: { dbPath: "/workspace/ArulaService/mongodb", directoryPerDB: true }, systemLog: { destination: "file", logAppend: true, path: "/home/lucas/workspace/ArulaService/mongodb/logs/mongo.log" } }
-2017-09-07T01:22:26.419-0300 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /workspace/ArulaService/mongodb not found., terminating
-2017-09-07T01:22:26.419-0300 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
-2017-09-07T01:22:26.419-0300 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] now exiting
-2017-09-07T01:22:26.419-0300 I CONTROL  [initandlisten] shutting down with code:100
-2017-09-07T01:24:26.399-0300 I CONTROL  [main] ***** SERVER RESTARTED *****
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] MongoDB starting : pid=11543 port=27017 dbpath=/home/lucas/workspace/ArulaService/mongodb 64-bit host=lucas-270E5J-2570EJ
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] db version v3.4.8
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] git version: 8ef456f89f63ab12941fe6b5352b20cff2522da3
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] allocator: tcmalloc
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] modules: none
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] build environment:
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten]     distmod: ubuntu1604
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten]     distarch: x86_64
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten]     target_arch: x86_64
-2017-09-07T01:24:26.403-0300 I CONTROL  [initandlisten] options: { net: { http: { RESTInterfaceEnabled: true, enabled: true } }, storage: { dbPath: "/home/lucas/workspace/ArulaService/mongodb", directoryPerDB: true }, systemLog: { destination: "file", logAppend: true, path: "/home/lucas/workspace/ArulaService/mongodb/logs/mongo.log" } }
-2017-09-07T01:24:26.429-0300 E NETWORK  [initandlisten] listen(): bind() failed Address already in use for socket: 0.0.0.0:27017
-2017-09-07T01:24:26.429-0300 E NETWORK  [initandlisten]   addr already in use
-2017-09-07T01:24:26.430-0300 E NETWORK  [initandlisten] Failed to set up sockets during startup.
-2017-09-07T01:24:26.430-0300 E STORAGE  [initandlisten] Failed to set up listener: InternalError: Failed to set up sockets
-2017-09-07T01:24:26.430-0300 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
-2017-09-07T01:24:26.430-0300 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
-2017-09-07T01:24:26.430-0300 I CONTROL  [initandlisten] now exiting
-2017-09-07T01:24:26.430-0300 I CONTROL  [initandlisten] shutting down with code:48
+
+2017-09-08T20:28:39.305-0300 [signalProcessingThread] got signal 15 (Terminated), will terminate after current cmd ends
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] now exiting
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] dbexit: 
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] shutdown: going to close listening sockets...
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] closing listening socket: 11
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] closing listening socket: 12
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] closing listening socket: 13
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] removing socket file: /tmp/mongodb-7778.sock
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] shutdown: going to flush diaglog...
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] shutdown: going to close sockets...
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] shutdown: waiting for fs preallocator...
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] shutdown: lock for final commit...
+2017-09-08T20:28:39.306-0300 [signalProcessingThread] shutdown: final commit...
+2017-09-08T20:28:39.463-0300 [signalProcessingThread] shutdown: closing all files...
+2017-09-08T20:28:39.463-0300 [signalProcessingThread] closeAllFiles() finished
+2017-09-08T20:28:39.463-0300 [signalProcessingThread] journalCleanup...
+2017-09-08T20:28:39.463-0300 [signalProcessingThread] removeJournalFiles
+2017-09-08T20:28:39.545-0300 [signalProcessingThread] shutdown: removing fs lock...
+2017-09-08T20:28:39.545-0300 [signalProcessingThread] dbexit: really exiting now
+2017-09-08T20:28:40.323-0300 ***** SERVER RESTARTED *****
+2017-09-08T20:28:40.326-0300 [initandlisten] MongoDB starting : pid=9523 port=7778 dbpath=/home/lucas/workspace/ArulaService/mongodb 64-bit host=lucas-270E5J-2570EJ
+2017-09-08T20:28:40.326-0300 [initandlisten] db version v2.6.10
+2017-09-08T20:28:40.326-0300 [initandlisten] git version: nogitversion
+2017-09-08T20:28:40.326-0300 [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-09-08T20:28:40.326-0300 [initandlisten] build info: Linux lgw01-12 3.19.0-25-generic #26~14.04.1-Ubuntu SMP Fri Jul 24 21:16:20 UTC 2015 x86_64 BOOST_LIB_VERSION=1_58
+2017-09-08T20:28:40.326-0300 [initandlisten] allocator: tcmalloc
+2017-09-08T20:28:40.326-0300 [initandlisten] options: { net: { http: { RESTInterfaceEnabled: true, enabled: true }, port: 7778 }, storage: { dbPath: "/home/lucas/workspace/ArulaService/mongodb", directoryPerDB: true }, systemLog: { destination: "file", logAppend: true, path: "/home/lucas/workspace/ArulaService/mongodb/logs/mongo.log" } }
+2017-09-08T20:28:40.422-0300 [initandlisten] journal dir=/home/lucas/workspace/ArulaService/mongodb/journal
+2017-09-08T20:28:40.422-0300 [initandlisten] recover : no journal files present, no recovery needed
+2017-09-08T20:28:40.509-0300 [initandlisten] waiting for connections on port 7778
+2017-09-08T20:28:40.510-0300 [websvr] admin web console waiting for connections on port 8778
+2017-09-08T20:28:54.926-0300 [initandlisten] connection accepted from 127.0.0.1:40786 #1 (1 connection now open)
+2017-09-08T20:28:54.927-0300 [conn1] end connection 127.0.0.1:40786 (0 connections now open)
+2017-09-08T20:29:40.511-0300 [clientcursormon] mem (MB) res:66 virt:556
+2017-09-08T20:29:40.511-0300 [clientcursormon]  mapped (incl journal view):320
+2017-09-08T20:29:40.511-0300 [clientcursormon]  connections:0
+2017-09-08T20:34:40.525-0300 [clientcursormon] mem (MB) res:67 virt:557
+2017-09-08T20:34:40.525-0300 [clientcursormon]  mapped (incl journal view):320
+2017-09-08T20:34:40.525-0300 [clientcursormon]  connections:0
+2017-09-08T20:39:40.539-0300 [clientcursormon] mem (MB) res:67 virt:557
+2017-09-08T20:39:40.539-0300 [clientcursormon]  mapped (incl journal view):320
+2017-09-08T20:39:40.539-0300 [clientcursormon]  connections:0

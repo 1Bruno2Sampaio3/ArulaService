@@ -3,6 +3,7 @@ package main
 import "os"
 
 func main() {
+
 	a := App{}
 	a.Init(
 		os.Getenv("ARULA_DB_USERNAME"),

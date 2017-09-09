@@ -4,8 +4,8 @@
 *.so
 *.dylib
 *.a
-*.log
 *.lock
+*.log
 
 # Test binary, build with `go test -c`
 *.test
@@ -16,9 +16,14 @@
 # Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
 
+# Github packages and vscode extensions
 go/src/github.com/
 go/src/golang.org/
 go/src/gopkg.in/
 go/src/sourcegraph.com/
 go/bin/
+
+# Mongodb files
 mongodb/journal/
+mongodb/local/
+mongodb/admin/
