@@ -22,7 +22,7 @@ func (a *App) Init(user, password, dbname string) {
 	if err != nil {
 		panic(err)
 	}
-	//defer s.Close()
+	defer s.Close()
 
 	s.SetMode(mgo.Monotonic, true)
 
@@ -39,7 +39,7 @@ func (a *App) Run(addr string) {
 
 func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/users", a.postUsers).Methods("POST")
-	a.Router.HandleFunc("/users", a.getUsers).Methods("GET")
+	a.Router.HandleFunc("/users/{id}", a.getUsers).Methods("GET")
 }
 
 func (a *App) postUsers(w http.ResponseWriter, r *http.Request) {
@@ -48,7 +48,7 @@ func (a *App) postUsers(w http.ResponseWriter, r *http.Request) {
 
 	if err := decoder.Decode(&u); err != nil {
 		fmt.Println(err)
-		respondWithError(w, http.StatusBadRequest, "Invalid request new user")
+		respondWithError(w, http.StatusBadRequest, "Invalid request - new user")
 		return
 	}
 
@@ -63,6 +63,23 @@ func (a *App) postUsers(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *App) getUsers(w http.ResponseWriter, r *http.Request) {
+	var u User
+
+	vars := mux.Vars(r)
+	id, ok := vars["id"]
+	if !ok {
+		respondWithError(w, http.StatusBadRequest, "Invalid user ID")
+		return
+	}
+
+	u, err := u.getUser(id, a.Session)
+	if err != nil {
+		fmt.Println(err)
+		respondWithError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	respondWithJSON(w, http.StatusCreated, u)
 
 }
 

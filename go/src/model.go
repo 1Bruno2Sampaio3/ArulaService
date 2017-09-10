@@ -5,64 +5,60 @@ import (
 	"time"
 
 	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 // Main structs
 
 type User struct {
-	ID          int          `json:"id" bson:"_id,omitempty"`
-	Name        string       `json:"name"`
-	Email       string       `json:"email"`
-	Password    string       `json:"password"`
-	CPF         string       `json:"cpf"`
-	Address     string       `json:"address"`
-	Birth       time.Time    `json:"date"`
-	Skills      []Skill      `json:"skills"`
-	Experiences []Experience `json:"experiences"`
-	Jobs        []Job        `json:"jobs"`
+	ID          bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	Name        string        `json:"name"`
+	Email       string        `json:"email"`
+	Password    string        `json:"password"`
+	CPF         string        `json:"cpf"`
+	Address     string        `json:"address"`
+	Birth       time.Time     `json:"date"`
+	Skills      []Skill       `json:"skills"`
+	Experiences []Experience  `json:"experiences"`
+	Jobs        []Job         `json:"jobs"`
 }
 
 type Company struct {
-	ID       int     `json:"id" bson:"_id,omitempty"`
-	Name     string  `json:"name"`
-	Email    string  `json:"email"`
-	Password string  `json:"password"`
-	CPF      string  `json:"cpf"`
-	Address  string  `json:"address"`
-	Area     []Skill `json:"skills"`
+	ID       bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	Name     string        `json:"name"`
+	Email    string        `json:"email"`
+	Password string        `json:"password"`
+	CPF      string        `json:"cpf"`
+	Address  string        `json:"address"`
+	Area     []Skill       `json:"skills"`
 }
 
 //Substructs
 
 type Skill struct {
-	ID   int    `json:"id" bson:"_id,omitempty"`
-	Name string `json:"name"`
+	ID   bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	Name string        `json:"name"`
 }
 
 type Experience struct {
-	ID         int       `json:"id" bson:"_id,omitempty"`
-	Name       string    `json:"name"`
-	Occupation string    `json:"occupation`
-	Start      time.Time `json:"start"`
-	End        time.Time `json:"end"`
+	ID         bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	Name       string        `json:"name"`
+	Occupation string        `json:"occupation`
+	Start      time.Time     `json:"start"`
+	End        time.Time     `json:"end"`
 }
 
 type Job struct {
-	ID       int       `json:"id" bson:"_id,omitempty"`
-	Title    string    `json:"title"`
-	Desc     string    `json:"desc"`
-	Date     time.Time `json:"date"`
-	Finished bool      `json:"finished"`
+	ID       bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	Title    string        `json:"title"`
+	Desc     string        `json:"desc"`
+	Date     time.Time     `json:"date"`
+	Finished bool          `json:"finished"`
 }
 
 func (u *User) createUser(db *mgo.Session) error {
 
-	// s, err := getSess()
-	// defer s.Close()
-
-	// if err != nil {
-	// 	return err
-	// }
+	u.ID = newId()
 
 	c := db.DB("arula-test").C("users")
 	if err := c.Insert(u); err != nil {
@@ -73,8 +69,16 @@ func (u *User) createUser(db *mgo.Session) error {
 
 }
 
-func (u *User) getUser(db *mgo.Session) error {
-	return errors.New("Not implemented")
+func (u *User) getUser(id string, db *mgo.Session) (User, error) {
+
+	result := User{}
+	c := db.DB("arula-test").C("users")
+	if err := c.Find(bson.M{"_id": bson.ObjectIdHex(id)}).One(&result); err != nil {
+		return result, err
+	}
+
+	return result, nil
+
 }
 
 func (u *User) updateUser(db *mgo.Session) error {
@@ -125,7 +129,6 @@ func getJobs(db *mgo.Session, start, count int) error {
 	return errors.New("Not implemented")
 }
 
-func getSess() (*mgo.Session, error) {
-
-	return mgo.Dial("127.0.0.1:7778/test")
+func newId() bson.ObjectId {
+	return bson.NewObjectId()
 }
