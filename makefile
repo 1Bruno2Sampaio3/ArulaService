@@ -4,14 +4,9 @@ DB_PW=6666
 DB_DROP=db.dropDatabase();
 DB_CREATE=db.createCollection('users');db.createCollection('companies');db.createCollection('jobs');
 
-
-
-
 debug:
 	cd ${GOPATH}/src && go build
 db:
-	echo "Deleting logs"
-	cd mongodb/logs && echo "" > mongo.log
 	sudo ./util/mongo.sh
 db_reset:
 	echo "Deleting logs"
