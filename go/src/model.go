@@ -17,7 +17,7 @@ type User struct {
 	Password    string        `json:"password"`
 	CPF         string        `json:"cpf"`
 	Address     string        `json:"address"`
-	Birth       time.Time     `json:"date"`
+	Birth       time.Time      `json:"birth"`
 	Skills      []Skill       `json:"skills"`
 	Experiences []Experience  `json:"experiences"`
 	Jobs        []Job         `json:"jobs"`
@@ -81,6 +81,31 @@ func (u *User) getUser(id string, db *mgo.Session) (User, error) {
 
 }
 
+func (c *Company) createCompany(db *mgo.Session) error {
+	
+	c.ID = newId()
+
+	cc := db.DB("arula-test").C("companies")
+	if err := cc.Insert(c); err != nil {
+		return err
+	}
+	
+	return nil
+	
+}
+
+func (c *Company) getCompany(id string, db *mgo.Session) (Company, error) {
+	
+		result := Company{}
+		cc := db.DB("arula-test").C("companies")
+		if err := cc.Find(bson.M{"_id": bson.ObjectIdHex(id)}).One(&result); err != nil {
+			return result, err
+		}
+	
+		return result, nil
+	
+	}
+
 func (u *User) updateUser(db *mgo.Session) error {
 	return errors.New("Not implemented")
 }
@@ -93,11 +118,11 @@ func getUsers(db *mgo.Session, start, count int) error {
 	return errors.New("Not implemented")
 }
 
-func (u *Company) createCompany(db *mgo.Session) error {
-	return errors.New("Not implemented")
-}
+// func (u *Company) createCompany(db *mgo.Session) error {
+// 	return errors.New("Not implemented")
+// }
 
-func (u *User) getCompany(db *mgo.Session) error {
+func (u *User) getCompanies(db *mgo.Session) error {
 	return errors.New("Not implemented")
 }
 
