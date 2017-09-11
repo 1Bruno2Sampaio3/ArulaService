@@ -118,10 +118,6 @@ func getUsers(db *mgo.Session, start, count int) error {
 	return errors.New("Not implemented")
 }
 
-// func (u *Company) createCompany(db *mgo.Session) error {
-// 	return errors.New("Not implemented")
-// }
-
 func (u *User) getCompanies(db *mgo.Session) error {
 	return errors.New("Not implemented")
 }
