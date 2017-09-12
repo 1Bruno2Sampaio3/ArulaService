@@ -86,6 +86,23 @@ func (u *User) getUser(id string, db *mgo.Session) (User, error) {
 
 }
 
+func (u *User) updateUser(id string, db *mgo.Session) error {
+
+	if err := validId(id); err != nil {
+		return err
+	}
+
+	c := db.DB("arula-test").C("users")
+	if err := c.Update(bson.M{"_id": bson.ObjectIdHex(id)}, u); err != nil {
+		return err
+	}
+
+	u.ID = bson.ObjectIdHex(id)
+
+	return nil
+
+}
+
 func (c *Company) createCompany(db *mgo.Session) error {
 
 	c.ID = newId()
@@ -114,10 +131,6 @@ func (c *Company) getCompany(id string, db *mgo.Session) (Company, error) {
 
 	return result, nil
 
-}
-
-func (u *User) updateUser(db *mgo.Session) error {
-	return errors.New("Not implemented")
 }
 
 func (u *User) deleteUser(db *mgo.Session) error {
