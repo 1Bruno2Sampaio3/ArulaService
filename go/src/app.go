@@ -52,7 +52,7 @@ func (a *App) postUsers(w http.ResponseWriter, r *http.Request) {
 
 	if err := decoder.Decode(&u); err != nil {
 		fmt.Println(err)
-		respondWithError(w, http.StatusBadRequest, "Invalid request - new user - " + err.Error())
+		respondWithError(w, http.StatusBadRequest, "Invalid request - new user - "+err.Error())
 		return
 	}
 
@@ -93,7 +93,7 @@ func (a *App) postCompanies(w http.ResponseWriter, r *http.Request) {
 
 	if err := decoder.Decode(&c); err != nil {
 		fmt.Println(err)
-		respondWithError(w, http.StatusBadRequest, "Invalid request - new company - " + err.Error())
+		respondWithError(w, http.StatusBadRequest, "Invalid request - new company - "+err.Error())
 		return
 	}
 
@@ -119,7 +119,6 @@ func (a *App) getCompanies(w http.ResponseWriter, r *http.Request) {
 
 	c, err := c.getCompany(id, a.Session)
 	if err != nil {
-		fmt.Println(err)
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}

@@ -5,6 +5,7 @@ DB_DROP=db.dropDatabase();
 DB_CREATE=db.createCollection('users');db.createCollection('companies');db.createCollection('jobs');
 
 debug:
+	echo Buildando Service
 	cd ${GOPATH}/src && go build
 db:
 	sudo ./util/mongo.sh
