@@ -17,7 +17,7 @@ type User struct {
 	Password    string        `json:"password"`
 	CPF         string        `json:"cpf"`
 	Address     string        `json:"address"`
-	Birth       time.Time      `json:"birth"`
+	Birth       time.Time     `json:"birth"`
 	Skills      []Skill       `json:"skills"`
 	Experiences []Experience  `json:"experiences"`
 	Jobs        []Job         `json:"jobs"`
@@ -72,6 +72,11 @@ func (u *User) createUser(db *mgo.Session) error {
 func (u *User) getUser(id string, db *mgo.Session) (User, error) {
 
 	result := User{}
+
+	if err := validId(id); err != nil {
+		return result, err
+	}
+
 	c := db.DB("arula-test").C("users")
 	if err := c.Find(bson.M{"_id": bson.ObjectIdHex(id)}).One(&result); err != nil {
 		return result, err
@@ -82,29 +87,34 @@ func (u *User) getUser(id string, db *mgo.Session) (User, error) {
 }
 
 func (c *Company) createCompany(db *mgo.Session) error {
-	
+
 	c.ID = newId()
 
 	cc := db.DB("arula-test").C("companies")
 	if err := cc.Insert(c); err != nil {
 		return err
 	}
-	
+
 	return nil
-	
+
 }
 
 func (c *Company) getCompany(id string, db *mgo.Session) (Company, error) {
-	
-		result := Company{}
-		cc := db.DB("arula-test").C("companies")
-		if err := cc.Find(bson.M{"_id": bson.ObjectIdHex(id)}).One(&result); err != nil {
-			return result, err
-		}
-	
-		return result, nil
-	
+
+	result := Company{}
+
+	if err := validId(id); err != nil {
+		return result, err
 	}
+
+	cc := db.DB("arula-test").C("companies")
+	if err := cc.Find(bson.M{"_id": bson.ObjectIdHex(id)}).One(&result); err != nil {
+		return result, err
+	}
+
+	return result, nil
+
+}
 
 func (u *User) updateUser(db *mgo.Session) error {
 	return errors.New("Not implemented")
@@ -152,4 +162,14 @@ func getJobs(db *mgo.Session, start, count int) error {
 
 func newId() bson.ObjectId {
 	return bson.NewObjectId()
+}
+
+func validId(id string) error {
+
+	if !bson.IsObjectIdHex(id) {
+		return errors.New("Id is not valid")
+	}
+
+	return nil
+
 }
