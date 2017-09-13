@@ -42,6 +42,7 @@ func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/users", a.postUsers).Methods("POST")
 	a.Router.HandleFunc("/users/{id}", a.getUsers).Methods("GET")
 	a.Router.HandleFunc("/users/{id}", a.updateUsers).Methods("PUT")
+	a.Router.HandleFunc("/users/{id}", a.deleteUsers).Methods("DELETE")
 	// Company
 	a.Router.HandleFunc("/companies", a.postCompanies).Methods("POST")
 	a.Router.HandleFunc("/companies/{id}", a.getCompanies).Methods("GET")
@@ -120,6 +121,28 @@ func (a *App) updateUsers(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respondWithJSON(w, http.StatusCreated, u)
+
+}
+
+func (a *App) deleteUsers(w http.ResponseWriter, r *http.Request) {
+
+	var u User
+
+	vars := mux.Vars(r)
+	id, ok := vars["id"]
+	if !ok {
+		respondWithError(w, http.StatusBadRequest, "Invalid user ID")
+		return
+	}
+
+	err := u.deleteUser(id, a.Session)
+	if err != nil {
+		fmt.Println(err)
+		respondWithError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	respondWithJSON(w, http.StatusOK, u)
 
 }
 
