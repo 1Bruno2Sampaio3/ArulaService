@@ -41,6 +41,7 @@ func (a *App) initializeRoutes() {
 	// User
 	a.Router.HandleFunc("/users", a.postUsers).Methods("POST")
 	a.Router.HandleFunc("/users/{id}", a.getUsers).Methods("GET")
+	a.Router.HandleFunc("/users/{id}", a.updateUsers).Methods("PUT")
 	// Company
 	a.Router.HandleFunc("/companies", a.postCompanies).Methods("POST")
 	a.Router.HandleFunc("/companies/{id}", a.getCompanies).Methods("GET")
@@ -51,8 +52,12 @@ func (a *App) postUsers(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 
 	if err := decoder.Decode(&u); err != nil {
-		fmt.Println(err)
 		respondWithError(w, http.StatusBadRequest, "Invalid request - new user - "+err.Error())
+		return
+	}
+
+	if u.ID != "" {
+		respondWithError(w, http.StatusBadRequest, "Invalid request - dont need id")
 		return
 	}
 
@@ -83,6 +88,37 @@ func (a *App) getUsers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	respondWithJSON(w, http.StatusFound, u)
+
+}
+
+func (a *App) updateUsers(w http.ResponseWriter, r *http.Request) {
+	var u User
+
+	decoder := json.NewDecoder(r.Body)
+
+	if err := decoder.Decode(&u); err != nil {
+		respondWithError(w, http.StatusBadRequest, "Invalid request - new user - "+err.Error())
+		return
+	}
+
+	if u.ID != "" {
+		respondWithError(w, http.StatusBadRequest, "Invalid request - dont need id")
+		return
+	}
+
+	vars := mux.Vars(r)
+	id, ok := vars["id"]
+	if !ok {
+		respondWithError(w, http.StatusBadRequest, "Invalid user ID")
+		return
+	}
+
+	if err := u.updateUser(id, a.Session); err != nil {
+		respondWithError(w, http.StatusBadRequest, "Invalid request - update user - "+err.Error())
+		return
+	}
+
 	respondWithJSON(w, http.StatusCreated, u)
 
 }
@@ -92,8 +128,12 @@ func (a *App) postCompanies(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 
 	if err := decoder.Decode(&c); err != nil {
-		fmt.Println(err)
 		respondWithError(w, http.StatusBadRequest, "Invalid request - new company - "+err.Error())
+		return
+	}
+
+	if c.ID != "" {
+		respondWithError(w, http.StatusBadRequest, "Invalid request - dont need id")
 		return
 	}
 
@@ -123,7 +163,7 @@ func (a *App) getCompanies(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	respondWithJSON(w, http.StatusCreated, c)
+	respondWithJSON(w, http.StatusFound, c)
 
 }
 
